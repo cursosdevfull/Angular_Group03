@@ -6,7 +6,8 @@ export interface MedicDto {
   cmp: string;
   dni: string;
   email: string;
-  photo: string;
+  photo: string | File;
+  locations: [];
 }
 
 export const mappingMedic = (result: any | any[]): MedicDto | MedicDto[] => {
@@ -25,6 +26,7 @@ export const mappingMedic = (result: any | any[]): MedicDto | MedicDto[] => {
         dni: it.dni,
         email: it.email,
         photo: it.photo,
+        locations: it.locations,
       };
     });
 
@@ -39,6 +41,7 @@ export const mappingMedic = (result: any | any[]): MedicDto | MedicDto[] => {
       dni: result.dni,
       email: result.email,
       photo: result.photo,
+      locations: result.locations,
     };
 
     return valueReturned;

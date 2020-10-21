@@ -18,6 +18,7 @@ import {
 })
 export class PhotoComponent implements OnInit, AfterViewInit, OnChanges {
   @ViewChild('contenido') contenido: ElementRef;
+  @ViewChild('inputFile') inputFile;
   @Output() selectedFile = new EventEmitter();
   @Input() photo: string;
   withHover = false;
@@ -34,21 +35,35 @@ export class PhotoComponent implements OnInit, AfterViewInit, OnChanges {
     this.contenido.nativeElement.style.backgroundImage = `url('${this.pathImage}')`;
   }
 
+  onUpload(): void {
+    this.inputFile.nativeElement.click();
+  }
+
+  addFile(file: File): void {
+    this.readFile(file);
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     const image = changes.photo.currentValue;
     const pathImage = `https://angular03.cursos-dev.com/photos/${image}`;
-    // this.contenido.nativeElement.style.backgroundImage = `url('${pathImage}')`;
+
+    setTimeout(() => {
+      this.contenido.nativeElement.style.backgroundImage = `url('${pathImage}')`;
+    });
   }
 
   filesSelected(list: FileList): void {
-    this.selectedFile.emit(list[0]);
+    this.readFile(list[0]);
+  }
 
+  readFile(file: File): void {
+    this.selectedFile.emit(file);
     const fr = new FileReader();
     fr.onloadend = (response) => {
       const data = (response.target as FileReader).result;
       this.contenido.nativeElement.style.backgroundImage = `url('${data}')`;
     };
 
-    fr.readAsDataURL(list[0]);
+    fr.readAsDataURL(file);
   }
 }

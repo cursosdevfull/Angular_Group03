@@ -5,5 +5,6 @@ export interface Medic {
   lastname: string;
   cmp: string;
   dni: string;
-  photo: string;
+  photo: string | File;
+  locations: [];
 }

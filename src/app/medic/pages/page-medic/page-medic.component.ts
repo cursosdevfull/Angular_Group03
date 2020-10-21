@@ -53,7 +53,7 @@ export class PageMedicComponent implements OnInit {
         return false;
       }
 
-      if (response.get('_id')) {
+      if (response.get('_id') && response.get('_id') !== 'null') {
         this.medicService.update(response).subscribe(() => {
           this.utils.showMessage('Registro actualizado');
           this.list();

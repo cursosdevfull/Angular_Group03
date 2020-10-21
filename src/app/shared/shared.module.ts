@@ -15,11 +15,18 @@ import { KeypadComponent } from './components/keypad/keypad.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
 import { PhotoComponent } from './components/photo/photo.component';
 import { UploadDirective } from './directives/upload.directive';
 
 @NgModule({
-  declarations: [HeadlineComponent, TableComponent, KeypadComponent, PhotoComponent, UploadDirective],
+  declarations: [
+    HeadlineComponent,
+    TableComponent,
+    KeypadComponent,
+    PhotoComponent,
+    UploadDirective,
+  ],
   imports: [
     CommonModule,
     MatTableModule,
@@ -40,6 +47,7 @@ import { UploadDirective } from './directives/upload.directive';
     MatTableModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatSelectModule,
     HeadlineComponent,
     TableComponent,
     KeypadComponent,
