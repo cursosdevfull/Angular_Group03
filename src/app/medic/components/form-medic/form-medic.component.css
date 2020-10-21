@@ -1,0 +1,12 @@
+.modal {
+  width: 60vw;
+}
+
+.modal .mat-dialog-container {
+  padding: 0;
+}
+
+.modal .mat-dialog-content {
+  margin: 0;
+  padding: 24px;
+}

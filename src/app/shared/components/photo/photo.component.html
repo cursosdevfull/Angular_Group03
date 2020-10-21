@@ -1,0 +1,7 @@
+<div class="container" fxLayout="column" fxLayoutAlign="center" appUpload (onHover)="withHover=$event"
+  [ngClass]="{hover: withHover}" (onUploadedFiles)="filesSelected($event)" fileTypeAccept="images/" #contenido>
+  <h3>Arrastrar y soltar foto o</h3>
+  <div fxLayout fxLayoutAlign="center">
+    <button mat-flat-button color="primary">Subir foto</button>
+  </div>
+</div>
