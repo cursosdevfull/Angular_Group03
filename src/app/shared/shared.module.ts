@@ -18,6 +18,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { PhotoComponent } from './components/photo/photo.component';
 import { UploadDirective } from './directives/upload.directive';
+import { ConfirmComponent } from './components/confirm/confirm.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { UploadDirective } from './directives/upload.directive';
     KeypadComponent,
     PhotoComponent,
     UploadDirective,
+    ConfirmComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,8 @@ import { UploadDirective } from './directives/upload.directive';
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
+    MatDialogModule,
+    FlexLayoutModule,
   ],
   exports: [
     MatTooltipModule,
@@ -53,6 +57,7 @@ import { UploadDirective } from './directives/upload.directive';
     KeypadComponent,
     PhotoComponent,
     UploadDirective,
+    ConfirmComponent,
   ],
 })
 export class SharedModule {}

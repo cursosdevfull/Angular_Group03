@@ -59,12 +59,27 @@ export class PageMedicComponent implements OnInit {
           this.list();
         });
       } else {
+        response.delete('_id');
         this.medicService.insert(response).subscribe(() => {
           this.utils.showMessage('Registro insertado');
           this.list();
         });
       }
     });
+  }
+
+  delete(data: Medic): void {
+    this.utils
+      .confirm('¿Está seguro de querer borrar?')
+      .subscribe((response) => {
+        if (!response) {
+          return false;
+        }
+
+        this.medicService.delete(data._id).subscribe(() => {
+          this.list();
+        });
+      });
   }
 
   action(actionButton: string): void {

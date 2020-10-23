@@ -30,4 +30,9 @@ export class MedicService {
   insert(fd: FormData): Observable<any> {
     return this.http.post(`${environment.pathApi}/medics`, fd);
   }
+
+  // tslint:disable-next-line: variable-name
+  delete(_id: string): Observable<any> {
+    return this.http.delete(`${environment.pathApi}/medics/${_id}`);
+  }
 }
