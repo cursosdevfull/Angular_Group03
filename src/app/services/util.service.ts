@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ConfirmComponent } from '../shared/components/confirm/confirm.component';
 
 @Injectable({
   providedIn: 'root',
@@ -28,5 +29,21 @@ export class UtilService {
     this.notifier.open(message, null, {
       duration: 2000,
     });
+  }
+
+  confirm(message: string = ''): Observable<any> {
+    const referenceConfirm: MatDialogRef<ConfirmComponent> = this.dialog.open(
+      ConfirmComponent,
+      {
+        width: '320px',
+        disableClose: true,
+      }
+    );
+
+    if (message) {
+      referenceConfirm.componentInstance.message = message;
+    }
+
+    return referenceConfirm.afterClosed();
   }
 }

@@ -10,6 +10,7 @@ import metaDataListMedicsJSON from '../../../../assets/jsons/metadata-medics.jso
 })
 export class ListMedicComponent implements OnInit {
   @Output() onEditMedic = new EventEmitter();
+  @Output() onDeleteMedic = new EventEmitter();
   @Input() dataSource: MedicDto[] = [];
 
   metaDataListMedics: MetaDataTableItem[] = metaDataListMedicsJSON;
@@ -24,6 +25,7 @@ export class ListMedicComponent implements OnInit {
         this.onEditMedic.emit(data);
         break;
       case 'ELIMINAR':
+        this.onDeleteMedic.emit(data);
         break;
     }
   }

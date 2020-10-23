@@ -48,7 +48,13 @@ export class FormMedicComponent implements OnInit {
     const fd: FormData = new FormData();
     // tslint:disable-next-line: forin
     for (const property in values) {
-      fd.append(property, values[property]);
+      if (property !== 'locations') {
+        fd.append(property, values[property]);
+      } else {
+        values.locations.forEach((el) => {
+          fd.append('locations[]', el);
+        });
+      }
     }
 
     if (this.selectedFile) {
