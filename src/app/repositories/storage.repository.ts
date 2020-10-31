@@ -12,4 +12,8 @@ export class StorageRepository implements IStorage {
   get(propertyName: string): string {
     return sessionStorage.getItem(propertyName);
   }
+
+  clear(): void {
+    sessionStorage.clear();
+  }
 }

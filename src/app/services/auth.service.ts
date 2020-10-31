@@ -6,6 +6,7 @@ import { IResponse } from '../interfaces/response.interface';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +32,13 @@ export class AuthService {
       });
   }
 
+  logout(): void {
+    this.storage.clear();
+    this.userLogged = false;
+    this.onChangeStatusUser.next();
+    this.router.navigate(['/']);
+  }
+
   get isUserLogged(): boolean {
     const user = this.storage.get('user');
 
@@ -39,11 +47,24 @@ export class AuthService {
     }
 
     return false;
+  }
 
-    // return this.userLogged;
+  getNewAccessToken(): Observable<any> {
+    const user = this.storage.get('user');
+    const refreshToken = JSON.parse(user).refreshToken;
+    return this.http.post(`${environment.pathApi}/auth/new-access-token`, {
+      refreshToken,
+    });
   }
 
   getStatusUser(): Observable<any> {
     return this.onChangeStatusUser.asObservable();
+  }
+
+  getRoles(): Array<string> {
+    const user = this.storage.get('user');
+    const accessToken = JSON.parse(user).accessToken;
+
+    return jwt_decode(accessToken);
   }
 }

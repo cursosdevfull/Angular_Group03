@@ -1,6 +1,14 @@
 <nav>
-  <button mat-button (click)="goToSection(menu.path)" *ngFor="let menu of listMenu">
-    <mat-icon>{{menu.icon}}</mat-icon>
-    {{menu.title}}
+  <button
+    mat-button
+    (click)="goToSection(menu.path)"
+    *ngFor="let menu of listMenu"
+  >
+    <mat-icon>{{ menu.icon }}</mat-icon>
+    {{ menu.title }}
+  </button>
+  <button mat-button (click)="logout()">
+    <mat-icon>lock</mat-icon>
+    Cerrar sesión
   </button>
 </nav>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Menu } from 'src/app/interfaces/menu';
 import { MenuService } from '../../../services/menu.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -13,7 +14,8 @@ export class MenuComponent implements OnInit {
 
   constructor(
     private readonly router: Router,
-    private readonly menuService: MenuService
+    private readonly menuService: MenuService,
+    private readonly authService: AuthService
   ) {
     this.listMenu = menuService.getMenu();
   }
@@ -22,5 +24,9 @@ export class MenuComponent implements OnInit {
 
   goToSection(path: string): void {
     this.router.navigate([path]);
+  }
+
+  logout(): void {
+    this.authService.logout();
   }
 }
