@@ -61,10 +61,12 @@ export class AuthService {
     return this.onChangeStatusUser.asObservable();
   }
 
-  getRoles(): Array<string> {
+  getRoles(): any {
     const user = this.storage.get('user');
     const accessToken = JSON.parse(user).accessToken;
 
-    return jwt_decode(accessToken);
+    const jsonUser = jwt_decode(accessToken);
+
+    return jsonUser.roles;
   }
 }

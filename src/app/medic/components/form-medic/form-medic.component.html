@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" fxLayout fxLayoutAlign="space-between center">
-  <h2>{{title}}</h2>
+  <h2>{{ title }}</h2>
   <div>
     <button mat-icon-button mat-dialog-close>
       <mat-icon>close</mat-icon>
@@ -11,46 +11,96 @@
   <form fxLayout="column" [formGroup]="group">
     <div fxLayout fxLayoutGap="10px">
       <div fxFlex="1 1 30%">
-        <app-photo (selectedFile)="updloadFile($event)" [photo]="data?.photo"></app-photo>
+        <app-photo
+          (selectedFile)="updloadFile($event)"
+          [photo]="data?.photo"
+        ></app-photo>
       </div>
       <div fxLayout="column" fxFlex="1 1 35%">
         <mat-form-field appearance="outline">
           <mat-label>Nombre</mat-label>
-          <input type="text" matInput name="name" formControlName="name" required>
+          <input
+            type="text"
+            matInput
+            name="name"
+            formControlName="name"
+            required
+          />
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Segundo nombre</mat-label>
-          <input type="text" matInput name="surname" formControlName="surname" required>
+          <input
+            type="text"
+            matInput
+            name="surname"
+            formControlName="surname"
+            required
+          />
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Apellido</mat-label>
-          <input type="text" matInput name="lastname" formControlName="lastname" required>
+          <input
+            type="text"
+            matInput
+            name="lastname"
+            formControlName="lastname"
+            required
+          />
         </mat-form-field>
       </div>
       <div fxLayout="column" fxFlex="1 1 35%" fxLayoutAlign="space-between">
         <mat-form-field appearance="outline">
           <mat-label>CMP</mat-label>
-          <input type="text" matInput name="cmp" formControlName="cmp" required>
+          <input
+            type="text"
+            matInput
+            name="cmp"
+            formControlName="cmp"
+            required
+          />
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>DNI</mat-label>
-          <input type="text" matInput name="dni" formControlName="dni" required>
+          <input
+            type="text"
+            matInput
+            name="dni"
+            formControlName="dni"
+            required
+          />
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Correo</mat-label>
-          <input type="text" matInput name="email" formControlName="email" required>
+          <input
+            type="text"
+            matInput
+            name="email"
+            formControlName="email"
+            required
+          />
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Localidad</mat-label>
           <mat-select multiple formControlName="locations">
-            <mat-option *ngFor="let location of listLocations" [value]="location._id">{{location.name}}</mat-option>
+            <mat-option
+              *ngFor="let location of listLocations"
+              [value]="location._id"
+              >{{ location.name }}</mat-option
+            >
           </mat-select>
         </mat-form-field>
       </div>
     </div>
 
     <div fxLayout fxLayoutAlign="center">
-      <button mat-flat-button color="accent" [disabled]="!group.valid" (click)="save()">Grabar</button>
+      <button
+        mat-flat-button
+        color="accent"
+        [disabled]="!group.valid"
+        (click)="save()"
+      >
+        Grabar
+      </button>
       <button mat-button mat-dialog-close>Cerrar</button>
     </div>
   </form>

@@ -46,7 +46,6 @@ export class TokenInterceptor implements HttpInterceptor {
             retry(3),
             mergeMap((response: any) => {
               this.storage.save('user', JSON.stringify(response.result));
-              //  response = {accessToken: "...", refreshToken:  "..."}
 
               const newUser = JSON.parse(this.storage.get('user'));
               const newAccessToken = newUser.accessToken;

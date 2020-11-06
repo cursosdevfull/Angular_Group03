@@ -19,6 +19,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { PhotoComponent } from './components/photo/photo.component';
 import { UploadDirective } from './directives/upload.directive';
 import { ConfirmComponent } from './components/confirm/confirm.component';
+import {
+  PerfectScrollbarConfigInterface,
+  PerfectScrollbarModule,
+  PERFECT_SCROLLBAR_CONFIG,
+} from 'ngx-perfect-scrollbar';
+import { RolesAllowedDirective } from './directives/roles-allowed.directive';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true,
+};
 
 @NgModule({
   declarations: [
@@ -28,6 +38,7 @@ import { ConfirmComponent } from './components/confirm/confirm.component';
     PhotoComponent,
     UploadDirective,
     ConfirmComponent,
+    RolesAllowedDirective,
   ],
   imports: [
     CommonModule,
@@ -58,6 +69,13 @@ import { ConfirmComponent } from './components/confirm/confirm.component';
     PhotoComponent,
     UploadDirective,
     ConfirmComponent,
+    PerfectScrollbarModule,
+  ],
+  providers: [
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
+    },
   ],
 })
 export class SharedModule {}

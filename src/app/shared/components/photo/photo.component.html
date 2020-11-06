@@ -1,8 +1,24 @@
-<div class="container" fxLayout="column" fxLayoutAlign="center" appUpload (onHover)="withHover=$event"
-  [ngClass]="{hover: withHover}" (onUploadedFiles)="filesSelected($event)" fileTypeAccept="images/" #contenido>
+<div
+  class="container"
+  fxLayout="column"
+  fxLayoutAlign="center"
+  appUpload
+  (onHover)="withHover = $event"
+  [ngClass]="{ hover: withHover }"
+  (onUploadedFiles)="filesSelected($event)"
+  fileTypeAccept="images/"
+  #contenido
+>
   <h3>Arrastrar y soltar foto o</h3>
   <div fxLayout fxLayoutAlign="center">
-    <button mat-flat-button color="primary" (click)="onUpload()">Subir foto</button>
-    <input type="file" accept="image/*" #inputFile (change)="addFile($event.target.files[0])">
+    <button mat-flat-button color="primary" (click)="onUpload()" type="button">
+      Subir foto
+    </button>
+    <input
+      type="file"
+      accept="image/*"
+      #inputFile
+      (change)="addFile($event.target.files[0])"
+    />
   </div>
 </div>
