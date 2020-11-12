@@ -1,5 +1,11 @@
-<div>
-  <button mat-fab *ngFor="let button of buttonsKeyPad" matTooltip="{{button.tooltip}}" (click)="action(button.action)">
-    <mat-icon>{{button.icon}}</mat-icon>
+<div fxLayout="column" fxLayoutGap="20px">
+  <button
+    mat-fab
+    *ngFor="let button of buttonsKeyPad"
+    matTooltip="{{ button.tooltip }}"
+    (click)="action(button.action)"
+    [color]="button.color"
+  >
+    <mat-icon>{{ button.icon }}</mat-icon>
   </button>
 </div>

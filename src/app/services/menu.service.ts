@@ -10,21 +10,25 @@ export class MenuService {
       title: 'Resumen',
       icon: 'dashboard',
       path: '/summary',
+      roles: ['ADMINISTRATOR'],
     },
     {
       title: 'Usuarios',
       icon: 'face',
       path: '/users',
+      roles: ['OPERATOR'],
     },
     {
       title: 'Médicos',
       icon: 'favorite_border',
       path: '/medics',
+      roles: ['ADMINISTRATOR', 'MEDIC'],
     },
     {
       title: 'Pilotos',
       icon: 'local_hospital',
       path: '/drivers',
+      roles: ['ADMINISTRATOR'],
     },
   ];
 

@@ -16,6 +16,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatListModule } from '@angular/material/list';
 import { PhotoComponent } from './components/photo/photo.component';
 import { UploadDirective } from './directives/upload.directive';
 import { ConfirmComponent } from './components/confirm/confirm.component';
@@ -25,6 +27,11 @@ import {
   PERFECT_SCROLLBAR_CONFIG,
 } from 'ngx-perfect-scrollbar';
 import { RolesAllowedDirective } from './directives/roles-allowed.directive';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ErrorFormDirective } from './directives/error-form.directive';
+import { ErrorControlDirective } from './directives/error-control.directive';
+import { ExportComponent } from './components/export/export.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -39,6 +46,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     UploadDirective,
     ConfirmComponent,
     RolesAllowedDirective,
+    ErrorFormDirective,
+    ErrorControlDirective,
+    ExportComponent,
   ],
   imports: [
     CommonModule,
@@ -48,8 +58,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatTooltipModule,
     MatDialogModule,
     FlexLayoutModule,
+    MatListModule,
+    HttpClientModule,
   ],
   exports: [
+    MatPaginatorModule,
     MatTooltipModule,
     MatSidenavModule,
     MatToolbarModule,
@@ -63,6 +76,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatDialogModule,
     MatSnackBarModule,
     MatSelectModule,
+    MatListModule,
+    MatBottomSheetModule,
     HeadlineComponent,
     TableComponent,
     KeypadComponent,
@@ -70,6 +85,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     UploadDirective,
     ConfirmComponent,
     PerfectScrollbarModule,
+    RolesAllowedDirective,
+    ErrorFormDirective,
+    ErrorControlDirective,
+    ExportComponent,
   ],
   providers: [
     {

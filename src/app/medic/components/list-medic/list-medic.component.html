@@ -1,10 +1,12 @@
 <div fxLayout fxLayoutAlign="center">
   <mat-card fxFlex="1 1 700px" class="mat-elevation-z12">
-    <perfect-scrollbar>
+    <perfect-scrollbar class="heightMaxPerfectScrollbar">
       <app-table
         [dataSource]="dataSource"
         [metaDataTable]="metaDataListMedics"
         fxLayout="column"
+        [paginator]="matPaginator"
+        *ngIf="dataSource.length"
       >
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef></th>
@@ -27,5 +29,11 @@
         </ng-container>
       </app-table>
     </perfect-scrollbar>
+    <mat-paginator
+      pageSize="10"
+      [length]="dataSource.length"
+      showFirstLastButtons="true"
+      hidePageSize="true"
+    ></mat-paginator>
   </mat-card>
 </div>

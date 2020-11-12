@@ -3,6 +3,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmComponent } from '../shared/components/confirm/confirm.component';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { ExportComponent } from '../shared/components/export/export.component';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +12,8 @@ import { ConfirmComponent } from '../shared/components/confirm/confirm.component
 export class UtilService {
   constructor(
     private readonly dialog: MatDialog,
-    private readonly notifier: MatSnackBar
+    private readonly notifier: MatSnackBar,
+    private readonly bottom: MatBottomSheet
   ) {}
 
   openModal(
@@ -45,5 +48,11 @@ export class UtilService {
     }
 
     return referenceConfirm.afterClosed();
+  }
+
+  openBottom(data: any[]) {
+    this.bottom.open(ExportComponent, {
+      data,
+    });
   }
 }

@@ -1,3 +1,7 @@
 .highline:hover {
   background-color: azure;
 }
+
+table {
+  width: 100%;
+}

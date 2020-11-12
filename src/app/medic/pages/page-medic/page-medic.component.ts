@@ -15,9 +15,16 @@ import { mappingMedic, MedicDto } from 'src/app/dtos/medic.dto';
 export class PageMedicComponent implements OnInit {
   listKeyPad: KeyPad[] = [
     {
+      tooltip: 'EXPORTAR',
+      icon: 'cloud_download',
+      action: 'EXPORT',
+      color: 'accent',
+    },
+    {
       tooltip: 'AGREGAR MÉDICO',
       icon: 'add',
       action: 'ADD',
+      color: 'primary',
     },
   ];
 
@@ -32,6 +39,10 @@ export class PageMedicComponent implements OnInit {
     this.list();
   }
 
+  /*   ngAfterViewInit() {
+    this.list();
+  }
+ */
   list(): void {
     this.medicService.getAll().subscribe(
       (response) => {
@@ -82,10 +93,17 @@ export class PageMedicComponent implements OnInit {
       });
   }
 
+  export() {
+    this.utils.openBottom(this.dataSource);
+  }
+
   action(actionButton: string): void {
     switch (actionButton) {
       case 'ADD':
         this.openForm();
+        break;
+      case 'EXPORT':
+        this.export();
         break;
     }
   }

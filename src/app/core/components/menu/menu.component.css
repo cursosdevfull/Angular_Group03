@@ -22,3 +22,7 @@ ul li a:link {
 ul li a:hover {
   background-color: green;
 }
+
+div {
+  display: inline-block;
+}

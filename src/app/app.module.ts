@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { MatPaginatorIntlCro } from './utils/paginator';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +24,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro },
   ],
   bootstrap: [AppComponent],
 })

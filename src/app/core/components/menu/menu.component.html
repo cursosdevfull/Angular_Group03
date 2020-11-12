@@ -1,12 +1,14 @@
 <nav>
-  <button
-    mat-button
-    (click)="goToSection(menu.path)"
-    *ngFor="let menu of listMenu"
-  >
-    <mat-icon>{{ menu.icon }}</mat-icon>
-    {{ menu.title }}
-  </button>
+  <div *ngFor="let menu of listMenu">
+    <button
+      mat-button
+      (click)="goToSection(menu.path)"
+      *appRolesAllowed="menu.roles"
+    >
+      <mat-icon>{{ menu.icon }}</mat-icon>
+      {{ menu.title }}
+    </button>
+  </div>
   <button mat-button (click)="logout()">
     <mat-icon>lock</mat-icon>
     Cerrar sesión

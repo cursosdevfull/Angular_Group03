@@ -1,4 +1,11 @@
 <app-headline title="Médicos"></app-headline>
-<app-keypad [buttonsKeyPad]="listKeyPad" (clickButton)="action($event)"></app-keypad>
-<app-list-medic (onEditMedic)="openForm($event)" (onDeleteMedic)="delete($event)" [dataSource]="dataSource">
+<app-keypad
+  [buttonsKeyPad]="listKeyPad"
+  (clickButton)="action($event)"
+></app-keypad>
+<app-list-medic
+  (onEditMedic)="openForm($event)"
+  (onDeleteMedic)="delete($event)"
+  [dataSource]="dataSource"
+>
 </app-list-medic>
