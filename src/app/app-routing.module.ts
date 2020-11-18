@@ -15,6 +15,14 @@ const routes: Routes = [
     },
   },
   {
+    path: 'histories',
+    loadChildren: () =>
+      import('./history/history.module').then((m) => m.HistoryModule),
+    data: {
+      rolesAllowed: ['ADMINISTRATOR'],
+    },
+  },
+  {
     path: 'medics',
     canActivate: [AuthorizationGuard],
     loadChildren: () =>

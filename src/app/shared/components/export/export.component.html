@@ -4,8 +4,16 @@
     <span mat-line>Exportar a Excel</span>
   </a>
 
-  <a href="#" mat-list-item (click)="exportTo($event, 'pdf')">
+  <a href="#" mat-list-item (click)="exportTo($event, 'pdf', 'open')">
     <mat-icon svgIcon="pdf"></mat-icon>
-    <span mat-line>Exportar a PDF</span>
+    <span mat-line>Exportar a PDF (Open)</span>
+  </a>
+  <a href="#" mat-list-item (click)="exportTo($event, 'pdf', 'download')">
+    <mat-icon svgIcon="pdf"></mat-icon>
+    <span mat-line>Exportar a PDF (Download)</span>
+  </a>
+  <a href="#" mat-list-item (click)="exportTo($event, 'pdf', 'print')">
+    <mat-icon svgIcon="pdf"></mat-icon>
+    <span mat-line>Exportar a PDF (Print)</span>
   </a>
 </mat-nav-list>

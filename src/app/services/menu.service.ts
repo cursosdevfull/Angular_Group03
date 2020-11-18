@@ -13,6 +13,12 @@ export class MenuService {
       roles: ['ADMINISTRATOR'],
     },
     {
+      title: 'Historias',
+      icon: 'face',
+      path: '/histories',
+      roles: ['ADMINISTRATOR'],
+    },
+    {
       title: 'Usuarios',
       icon: 'face',
       path: '/users',

@@ -1,5 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
+import {
+  MatBottomSheetRef,
+  MAT_BOTTOM_SHEET_DATA,
+} from '@angular/material/bottom-sheet';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ExportService } from 'src/app/services/export.service';
@@ -14,6 +17,7 @@ export class ExportComponent implements OnInit {
     private readonly matIconRegistry: MatIconRegistry,
     private readonly domSanitizer: DomSanitizer,
     private readonly exportService: ExportService,
+    private readonly reference: MatBottomSheetRef<ExportComponent>,
     @Inject(MAT_BOTTOM_SHEET_DATA) private data
   ) {
     this.matIconRegistry.addSvgIcon(
@@ -33,8 +37,13 @@ export class ExportComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  exportTo(evt: any, type: string) {
+  exportTo(evt: any, type: string, output: string = '') {
     evt.preventDefault();
-    this.exportService.exportToExcel(this.data, 'Médics', 'Médic');
+    if (type === 'excel') {
+      this.exportService.exportToExcel(this.data, 'Medics', 'Medic');
+    } else {
+      this.exportService.exportToPDF(this.data, 'Médicos', output);
+    }
+    this.reference.dismiss();
   }
 }

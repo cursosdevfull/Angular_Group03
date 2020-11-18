@@ -1,0 +1,11 @@
+mat-card {
+  height: calc(100vh - 196px);
+}
+
+.align-right {
+  text-align: right !important;
+}
+
+.heightMaxPerfectScrollbar {
+  height: 90%;
+}
