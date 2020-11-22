@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HistoryEditResolve } from '../services/history-edit.resolve';
 import { EditHistoryComponent } from './components/edit-history/edit-history.component';
 import { ListHistoryComponent } from './components/list-history/list-history.component';
 import { PageHistoryComponent } from './pages/page-history/page-history.component';
@@ -14,8 +15,11 @@ const routes: Routes = [
         component: ListHistoryComponent,
       },
       {
-        path: 'edit',
+        path: 'edit/:id',
         component: EditHistoryComponent,
+        resolve: {
+          history: HistoryEditResolve,
+        },
       },
     ],
   },

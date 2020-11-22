@@ -11,6 +11,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatPaginatorIntlCro } from './utils/paginator';
+import { HistoryEditResolve } from './services/history-edit.resolve';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { MatPaginatorIntlCro } from './utils/paginator';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro },
+    HistoryEditResolve,
   ],
   bootstrap: [AppComponent],
 })

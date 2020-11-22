@@ -1,5 +1,3 @@
-import { IterableDiffers } from '@angular/core';
-
 export interface HistoryDto {
   _id: string;
   dateRequest: Date;
@@ -28,7 +26,7 @@ export interface HistoryDto {
   treatment: string;
 }
 
-export const mappingMedic = (
+export const mappingHistory = (
   result: any | any[]
 ): HistoryDto | HistoryDto[] => {
   if (!result) {

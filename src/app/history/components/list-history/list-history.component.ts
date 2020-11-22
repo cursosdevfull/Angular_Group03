@@ -9,6 +9,9 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { HistoryDto } from 'src/app/dtos/history.dto';
 import { MetaDataTableItem } from 'src/app/interfaces/metadata-table-item.interface';
+import metaDataListHistoriesJSON from '../../../../assets/jsons/metadata-histories.json';
+import { HistoryService } from 'src/app/services/history.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-history',
@@ -18,17 +21,40 @@ import { MetaDataTableItem } from 'src/app/interfaces/metadata-table-item.interf
 export class ListHistoryComponent implements OnInit {
   @Output() onEditMedic = new EventEmitter();
   @Output() onDeleteMedic = new EventEmitter();
-  @Input() dataSource: HistoryDto[] = [];
+  dataSource: any = [];
   @ViewChild(MatPaginator, { static: true }) matPaginator: MatPaginator;
 
-  constructor() {}
+  fullName = 'serGIo HIDalgO';
 
-  ngOnInit(): void {}
+  texto =
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sapiente ratione dolorum ullam minus sed voluptatibus quis, ducimus nihil. Facere reiciendis voluptate delectus distinctio dolore porro expedita magnam veniam ut?';
+
+  currentDate = new Date();
+
+  currentPage: number = 0;
+  totalRecords: number = 0;
+
+  metaDataListHistories: MetaDataTableItem[] = metaDataListHistoriesJSON;
+
+  constructor(
+    private readonly historyService: HistoryService,
+    private readonly router: Router,
+    private readonly activatedRoute: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.listByPage();
+  }
 
   action(actionButton: string, data: HistoryDto): void {
     switch (actionButton) {
       case 'EDITAR':
-        this.onEditMedic.emit(data);
+        //this.router.navigate(['histories', 'edit', data._id]);
+        this.router.navigate(['edit', data._id], {
+          relativeTo: this.activatedRoute,
+          queryParams: { title: 'medic', app: 'ambulance' },
+          fragment: 'admin',
+        });
         break;
       case 'ELIMINAR':
         this.onDeleteMedic.emit(data);
@@ -37,4 +63,18 @@ export class ListHistoryComponent implements OnInit {
   }
 
   openForm(): void {}
+
+  ngAfterViewInit() {
+    this.matPaginator.page.subscribe((status) => {
+      this.currentPage = status.pageIndex;
+      this.listByPage();
+    });
+  }
+
+  listByPage() {
+    this.historyService.getByPage(this.currentPage).subscribe((data) => {
+      this.totalRecords = data.total;
+      this.dataSource = data.items;
+    });
+  }
 }

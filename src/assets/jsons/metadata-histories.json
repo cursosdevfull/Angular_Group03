@@ -1,0 +1,13 @@
+[
+  {
+    "field": "dateRequest",
+    "title": "Fecha",
+    "pipe": { "name": "date", "format": "dd/MMM/yy h:mm a" }
+  },
+
+  {
+    "field": "name",
+    "title": "Nombre"
+  },
+  { "field": "lastName", "title": "Apellido" }
+]
