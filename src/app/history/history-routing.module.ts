@@ -21,6 +21,11 @@ const routes: Routes = [
           history: HistoryEditResolve,
         },
       },
+
+      {
+        path: 'new',
+        component: EditHistoryComponent,
+      },
     ],
   },
 ];

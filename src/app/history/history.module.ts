@@ -6,6 +6,9 @@ import { PageHistoryComponent } from './pages/page-history/page-history.componen
 import { SharedModule } from '../shared/shared.module';
 import { EditHistoryComponent } from './components/edit-history/edit-history.component';
 import { ListHistoryComponent } from './components/list-history/list-history.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,6 +16,13 @@ import { ListHistoryComponent } from './components/list-history/list-history.com
     EditHistoryComponent,
     ListHistoryComponent,
   ],
-  imports: [CommonModule, HistoryRoutingModule, SharedModule],
+  imports: [
+    CommonModule,
+    HistoryRoutingModule,
+    SharedModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+  ],
 })
 export class HistoryModule {}

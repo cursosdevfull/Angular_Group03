@@ -1,10 +1,8 @@
 <div fxLayout fxLayoutAlign="center">
-  <!--   <div>
-    {{ texto | reductor: 50:"see more" }}
-  </div> -->
-  <!-- date(valuecurrentDate) -->
-
-  <!--   <p>{{ currentDate | date: "dd/MMM/yy, HH:mm" }}</p> -->
+  <app-keypad
+    [buttonsKeyPad]="listKeyPad"
+    (clickButton)="actionKeyPad($event)"
+  ></app-keypad>
   <mat-card fxFlex="1 1 900px" class="mat-elevation-z12">
     <perfect-scrollbar class="heightMaxPerfectScrollbar">
       <app-table

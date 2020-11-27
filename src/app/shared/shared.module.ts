@@ -19,6 +19,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatRadioModule } from '@angular/material/radio';
 import { PhotoComponent } from './components/photo/photo.component';
 import { UploadDirective } from './directives/upload.directive';
 import { ConfirmComponent } from './components/confirm/confirm.component';
@@ -82,6 +84,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatListModule,
     MatBottomSheetModule,
     MatTabsModule,
+    MatDatepickerModule,
+    MatRadioModule,
     HeadlineComponent,
     TableComponent,
     KeypadComponent,

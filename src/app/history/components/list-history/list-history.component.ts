@@ -12,6 +12,7 @@ import { MetaDataTableItem } from 'src/app/interfaces/metadata-table-item.interf
 import metaDataListHistoriesJSON from '../../../../assets/jsons/metadata-histories.json';
 import { HistoryService } from 'src/app/services/history.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { KeyPad } from 'src/app/interfaces/keypad.interface';
 
 @Component({
   selector: 'app-list-history',
@@ -24,17 +25,19 @@ export class ListHistoryComponent implements OnInit {
   dataSource: any = [];
   @ViewChild(MatPaginator, { static: true }) matPaginator: MatPaginator;
 
-  fullName = 'serGIo HIDalgO';
-
-  texto =
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sapiente ratione dolorum ullam minus sed voluptatibus quis, ducimus nihil. Facere reiciendis voluptate delectus distinctio dolore porro expedita magnam veniam ut?';
-
-  currentDate = new Date();
-
   currentPage: number = 0;
   totalRecords: number = 0;
 
   metaDataListHistories: MetaDataTableItem[] = metaDataListHistoriesJSON;
+
+  listKeyPad: KeyPad[] = [
+    {
+      tooltip: 'AGREGAR HISTORIA',
+      icon: 'add',
+      action: 'ADD',
+      color: 'primary',
+    },
+  ];
 
   constructor(
     private readonly historyService: HistoryService,
@@ -62,7 +65,15 @@ export class ListHistoryComponent implements OnInit {
     }
   }
 
-  openForm(): void {}
+  actionKeyPad(actionButton: string): void {
+    switch (actionButton) {
+      case 'ADD':
+        this.router.navigate(['new'], {
+          relativeTo: this.activatedRoute,
+        });
+        break;
+    }
+  }
 
   ngAfterViewInit() {
     this.matPaginator.page.subscribe((status) => {

@@ -1,7 +1,12 @@
 mat-card {
-  height: calc(100vh - 196px);
+  min-height: calc(100vh - 196px);
+  margin-bottom: 20px;
 }
 
 .align-right {
   text-align: right !important;
+}
+
+.container {
+  padding: 15px;
 }

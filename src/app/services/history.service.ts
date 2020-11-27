@@ -26,6 +26,6 @@ export class HistoryService {
   getOne(id: string) {
     return this.http
       .get(`${environment.pathApi}/histories/${id}`)
-      .pipe(delay(3000));
+      .pipe(pluck('result'));
   }
 }
