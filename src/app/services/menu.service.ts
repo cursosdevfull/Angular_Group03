@@ -7,31 +7,31 @@ import { Menu } from '../interfaces/menu';
 export class MenuService {
   private listMenu: Menu[] = [
     {
-      title: 'Resumen',
+      title: 'MENU.RESUMEN',
       icon: 'dashboard',
       path: '/summary',
       roles: ['ADMINISTRATOR'],
     },
     {
-      title: 'Historias',
+      title: 'MENU.HISTORIAS',
       icon: 'face',
       path: '/histories',
       roles: ['ADMINISTRATOR'],
     },
     {
-      title: 'Usuarios',
+      title: 'MENU.USUARIOS',
       icon: 'face',
       path: '/users',
       roles: ['OPERATOR'],
     },
     {
-      title: 'Médicos',
+      title: 'MENU.MEDICOS',
       icon: 'favorite_border',
       path: '/medics',
       roles: ['ADMINISTRATOR', 'MEDIC'],
     },
     {
-      title: 'Pilotos',
+      title: 'MENU.PILOTOS',
       icon: 'local_hospital',
       path: '/drivers',
       roles: ['ADMINISTRATOR'],

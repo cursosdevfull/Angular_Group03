@@ -8,12 +8,16 @@ import { DriverService } from 'src/app/services/driver.service';
 import { HistoryService } from 'src/app/services/history.service';
 import { MedicService } from 'src/app/services/medic.service';
 import { History } from 'src/app/interfaces/history.interface';
+// import { DeSubscribeAbstract } from 'src/app/classes/unsubscribe';
+import { Unsubscription } from 'src/app/decorators/decorator-unsubscribe';
 
+@Unsubscription({ name: 'desuscribir' })
 @Component({
   selector: 'app-edit-history',
   templateUrl: './edit-history.component.html',
   styleUrls: ['./edit-history.component.css'],
 })
+/* extends DeSubscribeAbstract */
 export class EditHistoryComponent implements OnInit {
   id;
   history: History;
@@ -29,7 +33,9 @@ export class EditHistoryComponent implements OnInit {
     private readonly historyService: HistoryService,
     private readonly medicService: MedicService,
     private readonly driverService: DriverService
-  ) {}
+  ) {
+    // super();
+  }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((response: any) => {
@@ -55,6 +61,7 @@ export class EditHistoryComponent implements OnInit {
   setForm() {
     console.log('history', this.history);
     this.group = new FormGroup({
+      _id: new FormControl(this.history?._id),
       dateRequest: new FormControl(
         this.history?.dateRequest,
         Validators.required
@@ -70,7 +77,7 @@ export class EditHistoryComponent implements OnInit {
       policy: new FormControl(this.history?.policy, Validators.required),
       document: new FormControl(this.history?.document, Validators.required),
       name: new FormControl(this.history?.name, Validators.required),
-      lastname: new FormControl(this.history?.lastName, Validators.required),
+      lastName: new FormControl(this.history?.lastName, Validators.required),
       phone: new FormControl(this.history?.phone),
       age: new FormControl(this.history?.age, Validators.required),
       typeAge: new FormControl(
@@ -105,7 +112,26 @@ export class EditHistoryComponent implements OnInit {
     });
   }
 
-  ngOnDestroy() {
-    this.subscriptionMedic.unsubscribe;
+  /*   ngOnDestroy() {
+
+    this.subscriptionMedic.unsubscribe();
+  } */
+
+  save() {
+    const dataForm = this.group.value;
+    dataForm.typeAge = dataForm.typeAge === 'true' ? true : false;
+    dataForm.gender = +dataForm.gender;
+    dataForm.medic = dataForm.medic._id;
+    dataForm.driver = dataForm.driver._id;
+
+    if (this.history) {
+      this.historyService.update(dataForm).subscribe(() => {
+        this.router.navigate(['/histories']);
+      });
+    } else {
+      this.historyService.insert(dataForm).subscribe(() => {
+        this.router.navigate(['/histories']);
+      });
+    }
   }
 }

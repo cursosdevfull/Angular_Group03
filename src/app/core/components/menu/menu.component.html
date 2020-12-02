@@ -6,7 +6,7 @@
       *appRolesAllowed="menu.roles"
     >
       <mat-icon>{{ menu.icon }}</mat-icon>
-      {{ menu.title }}
+      {{ menu.title | translate }}
     </button>
   </div>
   <button mat-button (click)="logout()">

@@ -36,6 +36,8 @@ import { ErrorControlDirective } from './directives/error-control.directive';
 import { ExportComponent } from './components/export/export.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReductorPipe } from './pipes/reductor.pipe';
+import { GraphicComponent } from './components/graphic/graphic.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -54,6 +56,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ErrorControlDirective,
     ExportComponent,
     ReductorPipe,
+    GraphicComponent,
   ],
   imports: [
     CommonModule,
@@ -65,6 +68,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FlexLayoutModule,
     MatListModule,
     HttpClientModule,
+    TranslateModule,
   ],
   exports: [
     MatPaginatorModule,
@@ -98,6 +102,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ErrorControlDirective,
     ExportComponent,
     ReductorPipe,
+    GraphicComponent,
+    TranslateModule,
   ],
   providers: [
     {

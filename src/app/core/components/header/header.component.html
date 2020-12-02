@@ -1,4 +1,12 @@
 <mat-toolbar color="primary" fxLayout fxLayoutAlign="space-between center">
-  <h1>Ambulance System</h1>
+  <h1>{{ "TITLE" | translate }}</h1>
   <app-menu></app-menu>
+  <div fxLayout fxLayoutGap="10px">
+    <button mat-flat-button color="accent" (click)="changeLanguage('es')">
+      ES
+    </button>
+    <button mat-flat-button color="warn" (click)="changeLanguage('en')">
+      EN
+    </button>
+  </div>
 </mat-toolbar>

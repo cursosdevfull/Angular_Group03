@@ -1,0 +1,10 @@
+{
+  "TITLE": "Sistema de ambulancia",
+  "MENU": {
+    "RESUMEN": "Resumen",
+    "HISTORIAS": "Historias",
+    "USUARIOS": "Usuarios",
+    "MEDICOS": "Médicos",
+    "PILOTOS": "Pilotos"
+  }
+}

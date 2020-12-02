@@ -1,6 +1,6 @@
 <div fxLayout fxLayoutAlign="center">
   <mat-card fxFlex="1 1 900px" class="mat-elevation-z12">
-    <form [formGroup]="group">
+    <form [formGroup]="group" (ngSubmit)="save()">
       <mat-tab-group
         mat-stretch-tabs
         class="example-stretched-tabs mat-elevation-z4"
@@ -62,7 +62,16 @@
                 <input
                   type="text"
                   matInput
-                  formControlName="lastname"
+                  formControlName="lastName"
+                  required
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>DNI</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="document"
                   required
                 />
               </mat-form-field>
@@ -189,6 +198,11 @@
           </div>
         </mat-tab>
       </mat-tab-group>
+      <div fxLayout fxLayoutAlign="center" class="container_button_save">
+        <button mat-flat-button color="primary" [disabled]="group.invalid">
+          Guardar
+        </button>
+      </div>
     </form>
   </mat-card>
 </div>

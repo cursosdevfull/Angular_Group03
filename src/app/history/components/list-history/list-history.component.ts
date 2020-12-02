@@ -13,6 +13,7 @@ import metaDataListHistoriesJSON from '../../../../assets/jsons/metadata-histori
 import { HistoryService } from 'src/app/services/history.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { KeyPad } from 'src/app/interfaces/keypad.interface';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-list-history',
@@ -42,7 +43,8 @@ export class ListHistoryComponent implements OnInit {
   constructor(
     private readonly historyService: HistoryService,
     private readonly router: Router,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly utilService: UtilService
   ) {}
 
   ngOnInit(): void {
@@ -60,7 +62,13 @@ export class ListHistoryComponent implements OnInit {
         });
         break;
       case 'ELIMINAR':
-        this.onDeleteMedic.emit(data);
+        this.utilService.confirm().subscribe((response: any) => {
+          if (response) {
+            this.historyService.delete(data._id).subscribe(() => {
+              this.listByPage();
+            });
+          }
+        });
         break;
     }
   }
